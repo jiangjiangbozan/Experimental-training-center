@@ -1,0 +1,15 @@
+{extend name="experiment"/}
+{block name="title"}
+视频教学资源 
+{/block}
+{block name="name"}
+视频教学资源
+{/block}
+{block name="content"}
+<div class="list-group">
+    <?php foreach($videoTeachings as $video_teaching): ?>
+    <a href="<?php echo url('video_teachingDetail', ['id' => $video_teaching['id']]); ?>" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($video_teaching['name']); ?></a>
+<?php endforeach; ?>
+</div>
+{$videoTeachings->render()}
+{/block}

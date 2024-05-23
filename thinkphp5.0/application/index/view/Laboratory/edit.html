@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>实验室</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+            top:30%;
+        }
+    </style>
+</head>
+
+<body class="container">
+    <div class="center">
+        <div class="col-md-12">
+            {php}$action = request()->action() === 'add' ? 'save' : 'update';{/php}
+            <form action="{:url($action)}" method="post">
+            <div class="mb-3 mt-3">
+                <input type="hidden" name="id" value="{$Image->getData('id')}" />
+                <label>名称:</label>
+                <input type="text" name="name" value="{$Image->getData('name')}" />
+            </div>
+            <div class="mb-3">
+                <label>内容:</label>
+                <input type="file" name="name" value="{$Image->getData('path')}" />
+                <img style="width: 360px;" src="./../image/{:$image->getData('path')}"/>
+                {:var_dump($image->getData('name'))}
+                <input type="file" name="path" rows="5" value="{$Image->getData('path')}"><img style="width: 360px;" src="./../image/{:$image->getData('path')}"/></input>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>图片管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+</head>
+
+<body class="container">
+
+    <!--导航栏开始-->
+    <div class="row">
+        <div class="col-md-2 bg-primary text-white">
+        </div>
+        <div class="col-md-8 bg-primary text-white">
+          <div class="btn-group">
+            <a  type="button" class="btn btn-primary" href="{:url('Shou/index')}" >网站首页</a>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+          中心概况
+          </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{:url('Zhong/index')}">中心介绍</a></li>
+              <li><a class="dropdown-item" href="{:url('Zu/index')}">组织结构</a></li>
+              <li><a class="dropdown-item" href="{:url('Gang/index')}">岗位职责</a></li>
+              <li><a class="dropdown-item" href="{:url('Bu/index')}">中心布局图</a></li>
+              <li><a class="dropdown-item" href="{:url('Shi/index')}">师资队伍</a></li>
+              <li><a class="dropdown-item" href="{:url('Zhan/index')}">中心展示</a></li>
+              <li><a class="dropdown-item" href="{:url('Guan/index')}">管理制度</a></li>
+              <li><a class="dropdown-item" href="{:url('V/index')}">VR中心</a></li>
+            </ul>
+          </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            新闻动态
+            </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{:url('Xinwen/xin')}">新闻快讯</a></li>
+                <li><a class="dropdown-item" href="{:url('Tong/index')}">通知公告</a></li>
+              </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            实验教学
+          </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{:url('Zhuan/index')}">专业实验</a></li>
+              <li><a class="dropdown-item" href="{:url('Kua/index')}">跨专业综合实验</a></li>
+              <li><a class="dropdown-item" href="{:url('Chuang/index')}">创新创业实验</a></li>
+              <li><a class="dropdown-item" href="{:url('Xu/index')}">虚拟仿真实验</a></li>
+              <li><a class="dropdown-item" href="{:url('Jiao/index')}">视频教学资源</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <a  type="button" class="btn btn-primary" href="{:url('Gui/index')}">规章制度</a>
+        </div>
+        <div class="btn-group">
+            <a  type="button" class="btn btn-primary " href="{:url('Fan/index')}">规范中心</a>
+        </div>
+        <div class="btn-group">
+            <a  type="button" class="btn btn-primary " href="{:url('Zi/index')}">资料下载</a>
+        </div>
+        </div>
+        <div class="col-md-2 bg-primary text-white">
+        </div>
+      </div>
+      <!--导航栏结束-->
+
+      
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+            <div class="row">
+              <div class="col-md-4">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="name">姓名</label>
+                        <input name="name" type="text" class="form-control" placeholder="姓名..." value="{:input('get.name')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+                <div class="col-md-4 text-center">
+                    <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;增加</a>
+                    <a href="{:url('Shou/index')}" class="btn btn-primary">主页</a>
+                </div>
+                
+            </div>
+            <hr />
+            <table class="table table-hover table-bordered ">
+                <tr class="bg-primary-subtle info">
+                    <th>序号</th>
+                    <th>名称</th>
+                    <th>内容</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="images" id="image" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$image->getData('name')}</td>
+                    <td><img style="width: 360px;" src="./../image/{$image->getData('path')}"/></td>
+                    <td>
+                	<a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $image->getData('id'))}">编辑</a>
+                    &nbsp;&nbsp;
+                    <a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $image->getData('id'))}">删除</a>
+                    </td>
+                </tr>
+                {/volist}
+            </table>
+            {$images->render()}
+        </div>
+    </div>
+</body>
+
+</html>

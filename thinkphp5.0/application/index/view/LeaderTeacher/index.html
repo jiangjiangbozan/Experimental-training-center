@@ -1,0 +1,20 @@
+{extend name="index"/}
+{block name="title"}
+领导团队
+{/block}
+{block name="name"}
+领导团队
+{/block}
+{block name="content"}
+<h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">领导团队</h3>
+<!-- <img src="./../image/team.jpg" style="width: 880px; margin-bottom: 50px;"/> -->
+{volist name="leaderteachers" id="image" key="key"}
+    <div style="width: 250px;">
+        <img style="width: 200px;" src="./../image/{$image->getData('path')}"/>
+    </div>
+    <div style="width: 250px;">
+        {$image->getData('name')}
+    </div>
+{/volist}
+{$leaderteachers->render()}
+{/block}

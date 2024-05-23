@@ -1,0 +1,23 @@
+{extend name="index"/}
+{block name="title"}
+VR中心
+{/block}
+{block name="css"}
+.span-vr{
+    line-height: 40px;
+    font-size: 14px;
+    color: #999999;
+    float: right;
+}
+{/block}
+{block name="content"}
+<h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">VR中心</h3>
+    <ul>
+        <li><a href="https://www.jsvry.com/p/RBzE0y2nMQ">现代农业体验中心</a><span class="span-vr">2021-05-31</span></li>
+        <li><a href="https://www.jsvry.com/p/RBzE0y2nMQ">生命实验教学平台</a><span class="span-vr">2021-05-31</span></li>
+        <li><a href="https://www.jsvry.com/p/8k5RJvY5ZE?scene_id=72424">文管实验教学平台</a><span class="span-vr">2021-05-31</span></li>
+        <li><a href="https://www.jsvry.com/p/RBzE0y2nMQ">“生物智造+”创新实践平台</a><span class="span-vr">2021-05-31</span></li>
+        <li><a href="https://www.jsvry.com/p/RBzE0y2nMQ">智能人工气候室群</a><span class="span-vr">2021-05-31</span></li>
+    </ul>
+    {$Vrs->render()}
+{/block}

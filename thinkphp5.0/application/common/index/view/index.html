@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{block name="title"}标题{/block}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <style type="text/css">
+        /*链接*/
+        a:hover {
+            color: #007bff; /* 鼠标悬停时，a标签的背景颜色为橙色 */
+        }
+        a{
+            color: #666666;
+            text-decoration: none;
+        }
+        /*版权*/
+        .colored-area {
+            background-color: #007bff; /* Blue background */
+            width: auto; /* Width of the area */
+            margin: 0 auto; /* Center the area in the browser window */
+            color: white; /* White text color */
+            text-align: center; /* Center the text */
+            padding: 20px; /* Add some padding for spacing */
+        }
+        /*相关链接*/
+        .colored-area1 {
+            background-color: #eaeaea; /* Blue background */
+            width: auto; /* Width of the area */
+            margin: 0 auto; /* Center the area in the browser window */
+            color: white; /* White text color */
+            text-align: center; /* Center the text */
+            padding: 20px; /* Add some padding for spacing */
+        }
+        h4{
+            font-size: 18px;
+            color: #333333;
+            line-height: 48px;
+            height: 48px;
+        }
+        li{
+            font-size: 14px;
+            color: #555555;
+            line-height: 48px;
+            height: 48px;
+        }
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        /*侧边栏*/
+        .left-name{
+            background: #007bff;
+            height: 75px;
+            padding: 25px 0 0 25px;
+            overflow: hidden;
+            width: 161.18px;
+        }
+        h1{
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 10px;
+        }
+        span{
+            color: #8dade1;
+            font-size: 10px;
+            line-height: 10px;
+        }
+        /*主体内容*/
+        .text-center {
+            font-size: 20px;
+            margin-bottom: 0;
+            margin-top: 0;
+            padding: 0px;
+            border: 0px currentColor;
+            border-image: none;
+            text-align: inherit !important;
+            font-family: "Microsoft Yahei", 宋体, Verdana, Arial, Helvetica, sans-serif;
+            text-indent: 50px; /* 保留段首缩进 */
+        }
+        {block name="css"}
+        {/block}
+    </style>
+    <script>
+        //弹出
+        function toggleText(text) {
+          var textDiv = document.getElementById('text');
+          if (textDiv.style.display === 'none') {
+            textDiv.style.display = 'block';
+          } else {
+            textDiv.style.display = 'none';
+          }
+
+          var textDiv = document.getElementById('at');
+          if (textDiv.style.display === 'none') {
+            textDiv.style.display = 'block';
+          } else {
+            textDiv.style.display = 'none';
+          }
+        }
+        //提示
+        function showSwal() {
+            Swal.fire({
+                title: '温馨提示',
+                text: '梦云智团队提示您：无法自动添加到收藏夹，请ctrl + D手动添加。',
+                type: 'info',
+                confirmButtonText: '确认'
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+      <!--背景开始-->
+        <div class="row">
+            <div class="col-8">
+                <a href="https://www.hebut.edu.cn/"><img style="width:1100px;height:200px" src="./../image/logo.png"/></a>   
+            </div>
+            <div class="col-4" style="position: absolute;top:100px;left: 1100px;">
+                <div>
+                    
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item "><button type="button" class="btn btn-outline-primary" onclick="showSwal()">加入收藏</button></a></li>
+                        <li class="breadcrumb-item "><a href="https://www.hebut.edu.cn/"><button type="button" class="btn btn-outline-primary">学校主页</button></a></li>
+                        <li class="breadcrumb-item"><a href="{:url('Login/index')}"><button type="button" class="btn btn-outline-primary">管理员</button></a></li>
+                    </ol>
+                </nav>
+            </div>
+            <div>
+                <form style="position: absolute;top:150px;left: 1100px;" class="d-flex" role="search">
+                    <input style="width:300px;height: 32px;" class="form-control me-2" type="search" placeholder="输入关键词搜索" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">搜索</button>
+                </form>
+            </div>
+        </div>
+      <!--背景结束-->
+      <!--导航栏开始-->
+        <div class="row" style="--bs-gutter-x: 0;">
+            <div class="col-2 bg-primary text-white">
+            </div>
+            <div class="col-8 bg-primary text-white">
+                <div class="btn-group">
+                   <a type="button" class="btn btn-primary" href="{:url('Shou/index')}">网站首页</a>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">中心概况</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{:url('Zhong/index')}">中心介绍</a></li>
+                        <li><a class="dropdown-item" href="{:url('Zu/index')}">组织结构</a></li>
+                        <li><a class="dropdown-item" href="{:url('Gang/index')}">岗位职责</a></li>
+                        <li><a class="dropdown-item" href="{:url('Bu/index')}">中心布局图</a></li>
+                        <li><a class="dropdown-item" href="{:url('Shi/index')}">师资队伍</a></li>
+                        <li><a class="dropdown-item" href="{:url('Zhan/index')}">中心展示</a></li>
+                        <li><a class="dropdown-item" href="{:url('Guan/index')}">管理制度</a></li>
+                        <li><a class="dropdown-item" href="{:url('Vr/index')}">VR中心</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">新闻动态</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{:url('News/index')}">新闻快讯</a></li>
+                        <li><a class="dropdown-item" href="{:url('Notification/index')}">通知公告</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">实验教学</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{:url('ProfessionalExperiment/index')}">专业实验</a></li>
+                        <li><a class="dropdown-item" href="{:url('SpecialtyExperiment/index')}">跨专业综合实验</a></li>
+                        <li><a class="dropdown-item" href="{:url('InnovationExperiment/index')}">创新创业实验</a></li>
+                        <li><a class="dropdown-item" href="{:url('Xu/index')}">虚拟仿真实验</a></li>
+                        <li><a class="dropdown-item" href="{:url('VideoTeaching/index')}">视频教学资源</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a type="button" class="btn btn-primary" href="{:url('Rules/index')}">规章制度</a>
+                </div>
+                <div class="btn-group">
+                     <a type="button" class="btn btn-primary" href="{:url('SpecificationCenter/index')}">规范中心</a>
+                 </div>
+                <div class="btn-group">
+                    <a type="button" class="btn btn-primary" href="{:url('Zi/index')}">资料下载</a>
+                </div>
+            </div>
+            <div class="col-2 bg-primary text-white">
+            </div>
+        </div>
+        <!--导航栏结束-->
+        <!--图片开始-->
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
+                <img style="width:1100px;height:300px" src="./../image/hebut.jpg"/>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <!--图片结束-->
+        <!--侧导航栏开始-->
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="left-name">
+                                    <h1>中心概况</h1>
+                                    <span>General Profile</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <nav class="navbar bg-body-tertiary">
+                                    <div class="container-fluid">
+                                        <a class="btn" href="{:url('Zhong/index')}">中心介绍</a>
+                                    </div>
+                                </nav>
+                                <nav class="navbar bg-body-tertiary">
+                                    <div class="container-fluid">
+                                        <a class="btn" href="{:url('Zu/index')}">组织结构</a>
+                                    </div>
+                                </nav>
+                                <nav class="navbar bg-body-tertiary">
+                                    <div class="container-fluid">
+                                        <a class="btn" href="{:url('Gang/index')}">岗位职责</a>
+                                    </div>
+                                </nav>
+                                <nav class="navbar bg-body-tertiary">
+                                    <div class="container-fluid">
+                                        <a class="btn" href="{:url('Bu/index')}">中心布局图</a>
+                                    </div>
+                                </nav>
+                                <nav class="navbar bg-body-tertiary">
+                                    <div class="container-fluid">
+                                        <a ><button class="btn" onclick="toggleText()">师资队伍</button><a>
+                                        <ul><a id="text" class="btn" href="{:url('Shi/index')}">现任教师</a></ul>
+                                        <ul><a id="at" class="btn" href="{:url('Leaderteacher/index')}">领导团队</a></ul>
+                                    </div>
+                                </nav>
+                                <nav class="navbar bg-body-tertiary">
+                                    <div class="container-fluid">
+                                        <a class="btn" href="{:url('Zhan/index')}">中心展示</a>
+                                    </div>
+                                </nav>
+                                <nav class="navbar bg-body-tertiary">
+                                    <div class="container-fluid">
+                                        <a class="btn" href="{:url('Guan/index')}">管理制度</a>
+                                    </div>
+                                </nav>
+                                <nav class="navbar bg-body-tertiary">
+                                    <div class="container-fluid">
+                                        <a class="btn" href="{:url('Vr/index')}">VR中心</a>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-10" style="border: #eaeaea 1px solid; padding: 0 20px;">
+                        {eq name="$power" value="0"}
+                        <a type="button" class="btn btn-primary"href="{:url('manage')}">修改</a> 
+                        {/eq}
+                        {block name="content"}
+                        {/block}
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <!--侧导航栏结束-->
+        <!--链接开始-->
+        <div class="colored-area1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-2">
+                        <h4>相关链接：</h4>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled d-flex flex-wrap justify-content-between">
+                            <li class="mb-2"><a href="https://youth.hebut.edu.cn/">校团委</a></li>
+                            <li class="mb-2"><a href="https://gzc.hebut.edu.cn/">资产与实验室管理处</a></li>
+                            <li class="mb-2"><a href="https://hiec.hebut.edu.cn/">大学生创新创业中心</a></li>
+                            <li class="mb-2"><a href="https://yjs.hebut.edu.cn/">研究生院</a></li>
+                            <li class="mb-2"><a href="https://ugs.hebut.edu.cn/">本科生院</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--链接结束-->
+        <!--版权开始-->
+        <div class="colored-area">
+            <p style="font-size: 30px;">河北工业大学</p>
+            <p style="font-size: 30px;">Copyright  梦云智团队</p>
+        </div>
+        <!--版权结束-->
+    </div>
+</body>
+</html>

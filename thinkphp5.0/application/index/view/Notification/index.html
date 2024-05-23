@@ -1,0 +1,15 @@
+{extend name="news"/}
+{block name="title"}
+通知公告 
+{/block}
+{block name="name"}
+通知公告
+{/block}
+{block name="content"}
+    <div class="list-group">
+        <?php foreach($notifications as $notification): ?>
+            <a href="<?php echo url('notificationDetail', ['id' => $notification['id']]); ?>" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($notification['title']); ?></a>
+        <?php endforeach; ?>
+    </div>
+    {$notifications->render()}
+{/block}
