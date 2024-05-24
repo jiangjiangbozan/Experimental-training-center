@@ -1,0 +1,23 @@
+{extend name="index"/}
+{block name="title"}
+管理制度 
+{/block}
+{block name="content"}
+<div class="center">
+    <div class="col-md-12">
+        <form method="post">
+        <div class="mt-3">
+            {volist name="Manages" id="manages" key="key"}
+            
+            <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center;">
+                <a class="text-decoration" id="{$manages->id}" type="text-center">{$manages->name}</a>
+            </h3>
+           
+            <p class="text-center">{$manages->content}</p>
+            {/volist}
+        </div>
+        </form>
+    </div>
+</div>
+
+{/block}
