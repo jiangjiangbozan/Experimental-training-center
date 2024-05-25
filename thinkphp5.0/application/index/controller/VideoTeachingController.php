@@ -17,6 +17,7 @@ class VideoTeachingController extends Controller
         $htmls = $this->fetch(); // 取回打包后的数据
         return $htmls; // 将数据返回给用户
     }
+    
     public function video_teachingDetail($id)
     {
         // 使用模型获取指定ID的视频信息

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>新闻动态</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+<script>
+function toggleText() {
+  var textDiv = document.getElementById('text');
+  if (textDiv.style.display === 'none') {
+    textDiv.style.display = 'block';
+  } else {
+    textDiv.style.display = 'none';
+  }
+}
+</script>
+  </head>
+  <body>
+    <div>
+      <!--背景开始-->
+      <div class="row">
+        <img style="width:1800px;height:200px" src="./../image/sreach.png"/>
+        <div style="position: absolute;top:10px;left: 800px;">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item "><a href="#">加入收藏</a></li>
+              <li class="breadcrumb-item "><a href="#">学校主页</a></li>
+              <li class="breadcrumb-item"><a href="#">管理员</a></li>
+            </ol>
+          </nav>
+        </div>
+        <form style="position: absolute;top:50px;left: 800px;" class="d-flex" role="search">
+          <input style="width:500px;height: 32px;" class="form-control me-2" type="search" placeholder="输入关键词搜索" aria-label="Search">
+          <button class="btn btn-primary" type="submit">搜索</button>
+        </form>
+      </div>
+      <!--背景结束-->
+      <!--导航栏开始-->
+      <div class="row">
+        <div class="col-md-2 bg-primary text-white">
+        </div>
+        <div class="col-md-8 bg-primary text-white">
+          <div class="btn-group">
+            <a  type="button" class="btn btn-primary" href="{:url('Shou/index')}" >网站首页</a>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+          中心概况
+          </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{:url('Zhong/index')}">中心介绍</a></li>
+              <li><a class="dropdown-item" href="{:url('Zu/index')}">组织结构</a></li>
+              <li><a class="dropdown-item" href="{:url('Gang/index')}">岗位职责</a></li>
+              <li><a class="dropdown-item" href="{:url('Bu/index')}">中心布局图</a></li>
+              <li><a class="dropdown-item" href="{:url('Shi/index')}">师资队伍</a></li>
+              <li><a class="dropdown-item" href="{:url('Zhan/index')}">中心展示</a></li>
+              <li><a class="dropdown-item" href="{:url('Guan/index')}">管理制度</a></li>
+              <li><a class="dropdown-item" href="{:url('V/index')}">VR中心</a></li>
+            </ul>
+          </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            新闻动态
+            </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{:url('Xin/index')}">新闻快讯</a></li>
+                <li><a class="dropdown-item" href="{:url('Tong/index')}">通知公告</a></li>
+              </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            实验教学
+          </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{:url('Zhuan/index')}">专业实验</a></li>
+              <li><a class="dropdown-item" href="{:url('Kua/index')}">跨专业综合实验</a></li>
+              <li><a class="dropdown-item" href="{:url('Chuang/index')}">创新创业实验</a></li>
+              <li><a class="dropdown-item" href="{:url('Xu/index')}">虚拟仿真实验</a></li>
+              <li><a class="dropdown-item" href="{:url('Jiao/index')}">视频教学资源</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <a  type="button" class="btn btn-primary" href="{:url('Gui/index')}">规章制度</a>
+        </div>
+        <div class="btn-group">
+            <a  type="button" class="btn btn-primary " href="{:url('Fan/index')}">规范中心</a>
+        </div>
+        <div class="btn-group">
+            <a  type="button" class="btn btn-primary " href="{:url('Zi/index')}">资料下载</a>
+        </div>
+        </div>
+        <div class="col-md-2 bg-primary text-white">
+        </div>
+      </div>
+      <!--导航栏结束-->
+      <!--图片开始-->
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+          <img style="width:920px;height:200px" src="./../image/center.png"/>
+        </div>
+        <div class="col-md-2">
+        </div>
+      </div>
+      <!--图片结束-->
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <!--侧导航栏开始-->
+            <div class="col-md-2 bg-light">
+              <img style="width:144px;height:80px" src="./../image/xin.png"/>
+              <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="btn"  href="{:url('Xin/index')}">新闻快讯</a>
+                </div>
+              </nav>
+              <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="btn" href="{:url('Tong/index')}">通知公告</a>
+                </div>
+              </nav>
+        
+            </div>
+            <div class="col-md-10 border">
+              新闻快讯
+              {eq name="$power" value="0"}
+               <button type="button" class="btn btn-primary"href="{:url('Gui/edit')}">修改</button> 
+               {/eq}
+              <hr>
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">实验实训中心组织全体教工集体学习火灾疏散逃生演练公开课</a>
+                <a href="#" class="list-group-item list-group-item-action">实验实训中心全力做好新学期实验教学保障工作</a>
+                <a href="#" class="list-group-item list-group-item-action">实验实训中心组织开展消防安全宣讲和应急逃生演练</a>
+                <a href="#" class="list-group-item list-group-item-action">气象科普活动周</a>
+                <a href="#" class="list-group-item list-group-item-action">消防安全知识及灭火器材操作使用培训</a>
+                <a href="#" class="list-group-item list-group-item-action">关于开展实验室安全应急线上演练暨实验室安全“随手拍”活动的通知</a>
+              </div>
+              <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">上一页</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+      </div>
+      <img style="width:1800px;height:200px" src="./../image/end.png"/>
+    </div>
+</body>
+</html>
