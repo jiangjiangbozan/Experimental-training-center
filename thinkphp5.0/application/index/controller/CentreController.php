@@ -11,7 +11,6 @@ class CentreController extends Controller
     {
         $Centre = new Centre; 
         $centres = Centre::paginate(10);
-        
         $name = Request::instance()->get('name');
         $power = Session::get('power');
     	$this->assign('power',$power);

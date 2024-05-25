@@ -10,7 +10,7 @@ class NotificationController extends Controller
     public function index()
     {
         $Notification = new Notification; 
-        $notifications = Notification::paginate(10);
+        $notifications = Notification::order('id', 'desc')->paginate(10);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('notifications', $notifications);
@@ -41,7 +41,7 @@ class NotificationController extends Controller
                 $Notification->where('title', 'like', '%' . $title . '%');
             }
             // $Notification->where('is', 'like', '%' . $is . '%');
-            $notifications = $Notification->paginate($pagesize, false, [
+            $notifications = $Notification->order('id', 'desc')->paginate($pagesize, false, [
                 'query'=>[
                     'title' => $title,
                     ],
@@ -68,12 +68,33 @@ class NotificationController extends Controller
     public function save(){
         $Notification = new Notification();
         // 实例化班级并赋值
+        $file = request()->file('image');
+        if($file){
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'index' . DS . 'image');
+            if($info){
+                // 成功上传后 获取上传信息
+                // 输出 jpg
+                // echo $info->getExtension();
+                // 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg
+                // echo $info->getSaveName();
+                // 输出 42a79759f284b767dfcb2a0197904287.jpg
+                // echo $info->getFilename();
+                // 实例化班级并赋值
+                $Notification->path = $info->getSaveName();
+            }else{
+                // 上传失败获取错误信息
+                echo $file->getError();
+            }
+        }
         $Notification->author = Request::instance()->post('author');
         $Notification->source = Request::instance()->post('source');
         $Notification->title = Request::instance()->post('title');
         $Notification->content = Request::instance()->post('content');
-        $Notification->save();
-        return $this->success('操作成功', url('manage'));
+        if($Notification->validate()->save()){
+            return $this->success('操作成功', url('manage'));
+        }else{
+            return $this->error($Notification->getError(), url('add'));
+        } 
 	}
     public function edit(){
         try {
@@ -120,7 +141,7 @@ class NotificationController extends Controller
             $Notification->path = $info->getSaveName();
             } 
         if (!is_null($Notification)) {
-            if (!$Notification->save()) {
+            if (!$Notification->validate()->save()) {
                 return $this->error('操作失败' . $Notification->getError());
             }
         } else {
@@ -130,14 +151,6 @@ class NotificationController extends Controller
         return $this->success('操作成功', url('index'));
     }
 
-    private function saveNotification(Notification &$Notification) 
-    {
-        // 写入要更新的数据
-        $Notification->name = Request::instance()->post('name');
-        $Notification->path = Request::instance()->post('path');
-        // 更新或保存
-        return $Notification->validate(true)->save();
-    }
     public function delete()
     {
         try {

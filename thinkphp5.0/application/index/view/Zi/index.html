@@ -223,8 +223,10 @@
                         </div>        
                     </div>
                     <div class="col-10" style="border: #eaeaea 1px solid; padding: 0 20px;">
-                        <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 25px;">资料下载</h3> 
-                            <a href="upload.html" class="btn btn-outline-danger">新增文件</a>
+                        <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 25px;">资料下载</h3>
+                            {eq name="$power" value="0"}
+                                <a href="upload.html" class="btn btn-outline-danger">新增文件</a>
+                            {/eq} 
                         <div class="list-group">
                             <?php foreach ($documents as $document): ?>
                                 <div class="d-flex align-items-center justify-content-between list-group-item list-group-item-action">
@@ -233,9 +235,12 @@
                                         <?php echo htmlspecialchars($document['name']); ?>
                                     </a>
                                     <!-- 删除按钮 -->
-                                    <a href="http://www.mengyunzhifirst.com/index/zi/delete.html?id=<?php echo $document['id']; ?>" class="btn btn-sm btn-outline-warning">
-                                        删除文件
-                                    </a>
+                                    {eq name="$power" value="0"}
+                                        <a href="http://www.mengyunzhifirst.com/index/zi/delete.html?id=<?php echo $document['id']; ?>" class="btn btn-sm btn-outline-warning">
+                                            删除文件
+                                        </a>
+                                    {/eq}
+                                    
                                 </div>
                             <?php endforeach; ?>
                         </div>
