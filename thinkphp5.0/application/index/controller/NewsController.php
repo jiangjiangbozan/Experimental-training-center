@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;   // 用于与V层进行数据传递
-use app\common\model\News; 
+use app\common\model\News;
 use think\Session;       
 use think\Request; 
 use think\Db;
@@ -10,7 +10,7 @@ class NewsController extends Controller
     public function index()
     {
         $News = new News; 
-        $new = News::paginate(10);
+        $new = News::order('id', 'desc')->paginate(10);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('new', $new);
@@ -36,12 +36,11 @@ class NewsController extends Controller
             $title = Request::instance()->get('title');
             $pagesize = 5;
            $News = new News; 
-
             if (!empty($title)) {
                 $News->where('title', 'like', '%' . $title . '%');
             }
             // $News->where('is', 'like', '%' . $is . '%');
-            $new = $News->paginate($pagesize, false, [
+            $new = $News->order('id', 'desc')->paginate($pagesize, false, [
                 'query'=>[
                     'title' => $title,
                     ],
@@ -79,7 +78,6 @@ class NewsController extends Controller
                 // echo $info->getFilename();
                 // 实例化班级并赋值
                 $News->path = $info->getSaveName();
-                return $this->success('操作成功', url('manage'));
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
@@ -90,8 +88,11 @@ class NewsController extends Controller
         $News->source = Request::instance()->post('source');
         $News->title = Request::instance()->post('title');
         $News->content = Request::instance()->post('content');
-        $News->save();
-        return $this->success('操作成功', url('manage'));
+        if($News->validate()->save()){
+            return $this->success('操作成功', url('manage'));
+        }else{
+            return $this->error($News->getError(), url('add'));
+        } 
 	}
 
     public function edit(){
@@ -140,7 +141,7 @@ class NewsController extends Controller
             $News->path = $info->getSaveName();
             } 
         if (!is_null($News)) {
-            if (!$News->save()) {
+            if (!$News->validate()->save()) {
                 return $this->error('操作失败' . $News->getError());
             }
         } else {

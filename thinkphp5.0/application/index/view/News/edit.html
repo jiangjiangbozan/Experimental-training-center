@@ -59,10 +59,15 @@
             <div>
                 <label>相关照片:</label>
             </div>
-             <div class="mt-3">
+            <div class="mt-3">
+                <?php if (0 !== (int)$News->getData('path')): ?>
                 <img style="width: 360px;" src="/index/image/{:$News->getData('path')}"/>
+                <?php else: ?>
+                <div class="alert alert-danger">暂无相关照片</div>
+                <?php endif; ?>
+             </div>
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">请选择你要更改的图片</label>
+                    <label for="formFile" class="form-label">请选择图片</label>
                     <input class="form-control" type="file" name="image" id="formFile">
                 </div> 
             </div>

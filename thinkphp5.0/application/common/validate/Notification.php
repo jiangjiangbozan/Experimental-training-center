@@ -2,7 +2,7 @@
 namespace app\common\validate;
 use think\Validate;
 
-class News extends Validate
+class Notification extends Validate
 {
     protected $rule =   [
         'title'  => 'require|max:25',
