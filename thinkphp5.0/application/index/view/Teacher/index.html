@@ -2,7 +2,22 @@
 {block name="title"}
     师资队伍
 {/block}
-{block name="content"}
-    <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">现任教师</h3>
-    <img src="./../image/teacher.jpg" style="width: 880px; margin-bottom: 50px;"/>
+.span-vr{
+    line-height: 40px;
+    font-size: 14px;
+    color: #999999;
+    float: right;
+}
 {/block}
+
+{block name="content"}
+<h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">现任教师</h3>
+{volist name="teachers" id="teachers" key="key"}
+
+<a href="<?php echo url('teacherdetail', ['id' => $teachers['id']]); ?>">
+    <img src="\Experimental-training-center\thinkphp5.0\public\index\image\{$teachers->path}" style="width: 360px; margin-bottom: 50px;"/>
+</a>
+
+{/volist}
+{/block}
+

@@ -57,6 +57,7 @@ class OrganizationController extends Controller{
         
         $Organization->id = 0;
         $Organization->name = '';
+        $Organization->path = '';
         $Organization->create_time = '';
 
         $this->assign('Organization', $Organization);
