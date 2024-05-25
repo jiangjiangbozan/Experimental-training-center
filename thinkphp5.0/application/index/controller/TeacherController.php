@@ -19,6 +19,19 @@ class TeacherController extends Controller{
         return $htmls; // 将数据返回给用户
         
     }
+    public function teacherDetail($id)
+    {
+        // 根据$id查询新闻详情
+        $teachers = Db::name('teacher')->where('id', $id)->find();
+        if (!$teachers) {
+            // 如果找不到新闻，可以抛出404错误或重定向到其他页面
+            $this->error('新闻不存在');
+        }
+        // 将新闻详情分配到视图
+        $this->assign('teachers', $teachers);
+        return $this->fetch();
+    }
+
      public function manage()
     {
 
@@ -57,6 +70,8 @@ class TeacherController extends Controller{
         
         $Teacher->id = 0;
         $Teacher->name = '';
+        $Teacher->path = '';
+        $Teacher->content = '';
         $Teacher->create_time = '';
 
         $this->assign('Teacher', $Teacher);
@@ -88,6 +103,7 @@ class TeacherController extends Controller{
                 // 实例化班级并赋值
                 $Teachers->path = $info->getSaveName();
                 $Teachers->name = Request::instance()->post('name');
+                $Teachers->content = Request::instance()->post('content');
                 $Teachers->create_time = Request::instance()->post('create_time');
                 $Teachers->save();
                 return $this->success('操作成功', url('manage'));

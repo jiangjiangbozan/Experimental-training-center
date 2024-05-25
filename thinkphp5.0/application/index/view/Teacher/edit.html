@@ -29,8 +29,13 @@
                 <label>名称:</label>
                 <input type="text" name="name" value="{$Teacher->getData('name')}" />
             </div>
-            <div class="mb-3">
+            <div class="mb-3 mt-3">
+                <input type="hidden" name="id" value="{$Teacher->getData('id')}" />
                 <label>内容:</label>
+                <input type="text" name="content" value="{$Teacher->getData('content')}" />
+            </div>
+            <div class="mb-3">
+                <label>图片:</label>
                 /****这里的*/
                 <input type="file" name="name" value="{$Teacher->getData('path')}" />
                 <img style="width: 360px;" src="./../image/{:$Teacher->getData('path')}"/>
