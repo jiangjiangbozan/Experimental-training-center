@@ -10,6 +10,10 @@ class NotificationController extends Controller
     public function index()
     {
         $Notification = new Notification; 
+        $Notification->where('')->order('state desc');
+        if (!empty($title)) {
+            $Notification->where('title', 'like', '%' . $title . '%')->order('state desc');
+        }
         $notifications = Notification::order('id', 'desc')->paginate(10);
     	$power = Session::get('power');
     	$this->assign('power',$power);
@@ -36,9 +40,9 @@ class NotificationController extends Controller
         try {
             $title = Request::instance()->get('title');
             $pagesize = 5;
-            $Notification = new Notification; 
+            $Notification->where('')->order('state desc');
             if (!empty($title)) {
-                $Notification->where('title', 'like', '%' . $title . '%');
+                $Notification->where('title', 'like', '%' . $title . '%')->order('state desc');
             }
             // $Notification->where('is', 'like', '%' . $is . '%');
             $notifications = $Notification->order('id', 'desc')->paginate($pagesize, false, [

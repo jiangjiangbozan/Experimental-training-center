@@ -9,7 +9,12 @@ class NewsController extends Controller
 {
     public function index()
     {
+        //获取数据
         $News = new News; 
+        $News->where('')->order('state desc');
+        if (!empty($title)) {
+            $News->where('title', 'like', '%' . $title . '%')->order('state desc');
+        }
         $new = News::paginate(10);
     	$power = Session::get('power');
     	$this->assign('power',$power);
@@ -36,9 +41,9 @@ class NewsController extends Controller
             $title = Request::instance()->get('title');
             $pagesize = 5;
            $News = new News; 
-
+           $News->where('')->order('state desc');
             if (!empty($title)) {
-                $News->where('title', 'like', '%' . $title . '%');
+                $News->where('title', 'like', '%' . $title . '%')->order('state desc');
             }
             // $News->where('is', 'like', '%' . $is . '%');
             $new = $News->paginate($pagesize, false, [
@@ -57,14 +62,17 @@ class NewsController extends Controller
             // throw $e;
             return '系统错误' . $e->getMessage();
         }
+        
     }
 
-    public function add(){
+    public function add()
+    {
     	$htmls = $this->fetch(); // 取回打包后的数据
         return $htmls;
     }
 
-    public function save(){
+    public function save()
+    {
         $News = new News();
         $file = request()->file('image');
         if($file){
