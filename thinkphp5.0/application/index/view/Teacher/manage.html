@@ -20,7 +20,6 @@
               <th>序号</th>
               <th>名称</th>
               <th>图片</th>
-              <th>内容</th>
               <th>操作</th>
           </tr>
           {volist name="teachers" id="teacher" key="key"}
@@ -28,7 +27,6 @@
               <td>{$key}</td>
               <td>{$teacher->getData('name')}</td>
               <td><img style="width: 360px;" src="./../image/{$teacher->getData('path')}"/></td>
-              <td>{$teacher->getData('content')}</td>
               <td>
             <a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $teacher->getData('id'))}">编辑</a>
               &nbsp;&nbsp;

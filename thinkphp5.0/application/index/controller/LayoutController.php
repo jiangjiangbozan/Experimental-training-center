@@ -10,7 +10,7 @@ class LayoutController extends Controller{
 	public function index()
     {
         $Layout = new Layout; 
-        $layouts = Layout::paginate(10);
+        $layouts = Layout::paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('layouts', $layouts);

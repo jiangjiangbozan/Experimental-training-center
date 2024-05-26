@@ -12,7 +12,7 @@ class ResponsibilityController extends Controller
     {
         $name = Request::instance()->get('name');
         $Responsibility = new Responsibility; 
-        $responsibilitys = Responsibility::paginate(10);
+        $responsibilitys = Responsibility::paginate(5);
         $power = Session::get('power');
     	$this->assign('power',$power);
 

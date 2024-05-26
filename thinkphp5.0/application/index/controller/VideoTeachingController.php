@@ -10,7 +10,7 @@ class VideoTeachingController extends Controller
     public function index()
     {
         $VideoTeaching = new VideoTeaching; 
-        $videoTeachings = VideoTeaching::paginate(10);
+        $videoTeachings = VideoTeaching::paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('videoTeachings', $videoTeachings);

@@ -146,10 +146,10 @@
             </div>
             <div class="col-8 bg-primary text-white">
                 <div class="btn-group">
-                   <a type="button" class="btn btn-primary" href="{:url('Index/index')}">网站首页</a>
+                   <a type="button" style="Width:200px" class="btn btn-primary" href="{:url('Index/index')}">网站首页</a>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">中心概况</button>
+                    <button type="button" style="Width:200px" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">中心概况</button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{:url('Centre/index')}">中心介绍</a></li>
                         <li><a class="dropdown-item" href="{:url('Organization/index')}">组织结构</a></li>
@@ -162,30 +162,20 @@
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">新闻动态</button>
+                    <button type="button" style="Width:200px" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">新闻动态</button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{:url('News/index')}">新闻快讯</a></li>
                         <li><a class="dropdown-item" href="{:url('Notification/index')}">通知公告</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">实验教学</button>
+                    <button type="button" style="Width:200px" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">实验教学</button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{:url('ProfessionalExperiment/index')}">专业实验</a></li>
-                        <li><a class="dropdown-item" href="{:url('SpecialtynExperiment/index')}">跨专业综合实验</a></li>
-                        <li><a class="dropdown-item" href="{:url('InnovationExperiment/index')}">创新创业实验</a></li>
-                        <li><a class="dropdown-item" href="{:url('Xu/index')}">虚拟仿真实验</a></li>
                         <li><a class="dropdown-item" href="{:url('VideoTeaching/index')}">视频教学资源</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <a type="button" class="btn btn-primary" href="{:url('Rules/index')}">规章制度</a>
-                </div>
-                <div class="btn-group">
-                     <a type="button" class="btn btn-primary" href="{:url('SpecificationCenter/index')}">规范中心</a>
-                 </div>
-                <div class="btn-group">
-                    <a type="button" class="btn btn-primary" href="{:url('Zi/index')}">资料下载</a>
+                    <a type="button" style="Width:200px" class="btn btn-primary" href="{:url('Zi/index')}">资料下载</a>
                 </div>
             </div>
             <div class="col-2 bg-primary text-white">
@@ -222,10 +212,10 @@
                             </div>
                         </div>        
                     </div>
-                    <div class="col-10" style="border: #eaeaea 1px solid; padding: 0 20px;">
+                    <div  style=" padding-bottom:40px" class="col-10" style="border: #eaeaea 1px solid; padding: 0 20px;">
                         <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 25px;">资料下载</h3>
                             {eq name="$power" value="0"}
-                                <a href="upload.html" class="btn btn-outline-danger">新增文件</a>
+                                <a href="upload.html" class="btn btn-outline-danger mb-3">新增文件</a>
                             {/eq} 
                         <div class="list-group">
                             <?php foreach ($documents as $document): ?>

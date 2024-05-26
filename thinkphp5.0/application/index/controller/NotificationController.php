@@ -10,7 +10,7 @@ class NotificationController extends Controller
     public function index()
     {
         $Notification = new Notification; 
-        $notifications = Notification::order('id', 'desc')->paginate(10);
+        $notifications = Notification::order('id', 'desc')->paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('notifications', $notifications);
@@ -60,6 +60,14 @@ class NotificationController extends Controller
     }
 
     public function add(){
+        $author = session('Notification_add_author');
+        $source = session('Notification_add_source');
+        $title = session('Notification_add_title');
+        $content = session('Notification_add_content');
+        $this->assign('author', $author);
+        $this->assign('source', $source);
+        $this->assign('title', $title);
+        $this->assign('content', $content);
     	$htmls = $this->fetch(); // 取回打包后的数据
         return $htmls;
 
@@ -91,8 +99,16 @@ class NotificationController extends Controller
         $Notification->title = Request::instance()->post('title');
         $Notification->content = Request::instance()->post('content');
         if($Notification->validate()->save()){
+            session('Notification_add_author', null);
+            session('Notification_add_source', null);
+            session('Notification_add_title', null);
+            session('Notification_add_content', null);
             return $this->success('操作成功', url('manage'));
         }else{
+            session('Notification_add_author', $Notification->author);
+            session('Notification_add_source', $Notification->source);
+            session('Notification_add_title', $Notification->title);
+            session('Notification_add_content', $Notification->content);
             return $this->error($Notification->getError(), url('add'));
         } 
 	}

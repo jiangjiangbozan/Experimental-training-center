@@ -22,7 +22,6 @@
                     <th>序号</th>
                     <th>名称</th>
                     <th>内容</th>
-                    <th>时间</th>
                     <th>操作</th>
                 </tr>
                 {volist name="shows" id="show" key="key"}
@@ -30,7 +29,6 @@
                     <td>{$key}</td>
                     <td>{$show->name}</td>
                     <td><img style="width: 360px;" src="./../image/{$show->getData('path')}"/></td>
-                    <td>{$show->getData('create_time')}</td>
                     <td>
                 	<a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $show->getData('id'))}">编辑</a>
                     &nbsp;&nbsp;
