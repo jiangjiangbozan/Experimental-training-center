@@ -21,15 +21,21 @@
                     <th>序号</th>
                     <th>名称</th>
                     <th>内容</th>
-                    <th>创建时间</th>
                     <th>操作</th>
                 </tr>
                 {volist name="manages" id="manage" key="key"}
                 <tr>
                     <td>{$key}</td>
                     <td>{$manage->getData('name')}</td>
-                    <td>{$manage->getData('content')}</td>
-                    <td>{$manage->getData('create_time')}</td>
+                    <td>
+                        <span class="d-inline-block text-truncate" 
+                            style="color:#0D2D34;
+                            font-size: 15px;
+                            line-height: 23px;
+                            max-width: 150px;">
+                            {$manage->getData('content')}
+                        </span>
+                    </td>
                     <td><a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $manage->getData('id'))}">编辑</a>
                         &nbsp;&nbsp;
                     </td>

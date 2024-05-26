@@ -59,6 +59,14 @@ class NewsController extends Controller
     }
 
     public function add(){
+        $author = session('News_add_author');
+        $source = session('News_add_source');
+        $title = session('News_add_title');
+        $content = session('News_add_content');
+        $this->assign('author', $author);
+        $this->assign('source', $source);
+        $this->assign('title', $title);
+        $this->assign('content', $content);
     	$htmls = $this->fetch(); // 取回打包后的数据
         return $htmls;
     }
@@ -89,8 +97,16 @@ class NewsController extends Controller
         $News->title = Request::instance()->post('title');
         $News->content = Request::instance()->post('content');
         if($News->validate()->save()){
+            session('News_add_author', null);
+            session('News_add_source', null);
+            session('News_add_title', null);
+            session('News_add_content', null);
             return $this->success('操作成功', url('manage'));
         }else{
+            session('News_add_author', $News->author);
+            session('News_add_source', $News->source);
+            session('News_add_title', $News->title);
+            session('News_add_content', $News->content);
             return $this->error($News->getError(), url('add'));
         } 
 	}
