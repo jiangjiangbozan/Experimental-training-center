@@ -10,7 +10,7 @@ class ManageController extends Controller
     public function index()
     {
         $Manage = new Manage; 
-        $Manages = Manage::paginate(10);
+        $Manages = Manage::paginate(5);
         
         $power = Session::get('power');
     	$this->assign('power',$power);

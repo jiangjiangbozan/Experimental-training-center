@@ -15,7 +15,7 @@ class IndexController extends Controller
             $News->where('title', 'like', '%' . $title . '%')->order('state desc');
         }
         $Notification = new Notification; 
-        $notifications = Notification::paginate(10);
+        $notifications = Notification::paginate(5);
         $new = News::paginate(10);
     	$power = Session::get('power');
     	$this->assign('power',$power);

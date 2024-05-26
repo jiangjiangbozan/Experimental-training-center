@@ -21,10 +21,8 @@ VR中心
           <tr class="bg-primary-subtle info">
               <th>序号</th>
               <th>标题</th>
-              <th>内容</th>
+              <th>连接</th>
               <th>上传日期</th>
-              <th>作者</th>
-              <th>资源来源</th>
               <th>操作</th>
           </tr>
           {volist name="Vrs" id="image" key="key"}
@@ -37,12 +35,10 @@ VR中心
                         font-size: 15px;
                         line-height: 23px;
                         max-width: 150px;">
-                    {$image->getData('content')}
+                    {$image->getData('path')}
                 </span>
               </td>
               <td>{$image->getData('publish_date')}</td>
-              <td>{$image->getData('author')}</td>
-              <td>{$image->getData('source')}</td>
               <td>
             <a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $image->getData('id'))}">编辑</a>
               &nbsp;&nbsp;

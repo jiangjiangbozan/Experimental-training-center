@@ -11,7 +11,7 @@ class LaboratoryController extends Controller
     public function index()
     {
         $Laboratory = new Laboratory; 
-        $laboratories = Laboratory::paginate(10);
+        $laboratories = Laboratory::paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('laboratories', $laboratories);

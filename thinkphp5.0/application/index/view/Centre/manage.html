@@ -28,7 +28,15 @@
                 <tr>
                     <td>{$key}</td>
                     <td>{$centre->getData('name')}</td>
-                    <td>{$centre->getData('content')}</td>
+                    <td>
+                        <span class="d-inline-block text-truncate" 
+                        style="color:#0D2D34;
+                                font-size: 15px;
+                                line-height: 23px;
+                                max-width: 300px;">
+                            {$centre->getData('content')}
+                        </span>
+                    </td>
                     <td>{$centre->getData('create_time')}</td>
                     <td><a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $centre->getData('id'))}">编辑</a>
                         &nbsp;&nbsp;
@@ -36,8 +44,6 @@
                 </tr>
                 {/volist}
             </table>
-    
-            
             {$centres->render()}
             {/block}
         

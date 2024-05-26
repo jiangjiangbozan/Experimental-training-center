@@ -10,7 +10,7 @@ class OrganizationController extends Controller{
 	public function index()
     {
         $Organization = new Organization; 
-        $organizations = Organization::paginate(10);
+        $organizations = Organization::paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('organizations', $organizations);
