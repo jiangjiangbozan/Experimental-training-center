@@ -10,6 +10,10 @@ class IndexController extends Controller
     public function index()
     {
         $News = new News; 
+        $News->where('')->order('state desc');
+        if (!empty($title)) {
+            $News->where('title', 'like', '%' . $title . '%')->order('state desc');
+        }
         $Notification = new Notification; 
         $notifications = Notification::paginate(5);
         $new = News::paginate(10);
