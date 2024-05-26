@@ -10,7 +10,7 @@ class NotificationController extends Controller
     public function index()
     {
         $Notification = new Notification; 
-        $notifications = Notification::order('id', 'desc')->paginate(10);
+        $notifications = Notification::order('id', 'desc')->paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('notifications', $notifications);

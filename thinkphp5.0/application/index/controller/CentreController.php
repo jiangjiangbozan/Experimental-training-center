@@ -10,7 +10,7 @@ class CentreController extends Controller
     public function index()
     {
         $Centre = new Centre; 
-        $centres = Centre::paginate(10);
+        $centres = Centre::paginate(5);
         $name = Request::instance()->get('name');
         $power = Session::get('power');
     	$this->assign('power',$power);

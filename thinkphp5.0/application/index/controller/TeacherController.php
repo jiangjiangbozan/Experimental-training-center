@@ -10,7 +10,7 @@ class TeacherController extends Controller{
 	public function index()
     {
         $Teacher = new Teacher; 
-        $teachers = Teacher::paginate(10);
+        $teachers = Teacher::paginate(4);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('teachers', $teachers);
@@ -71,7 +71,6 @@ class TeacherController extends Controller{
         $Teacher->id = 0;
         $Teacher->name = '';
         $Teacher->path = '';
-        $Teacher->content = '';
         $Teacher->create_time = '';
 
         $this->assign('Teacher', $Teacher);
@@ -103,7 +102,6 @@ class TeacherController extends Controller{
                 // 实例化班级并赋值
                 $Teachers->path = $info->getSaveName();
                 $Teachers->name = Request::instance()->post('name');
-                $Teachers->content = Request::instance()->post('content');
                 $Teachers->create_time = Request::instance()->post('create_time');
                 $Teachers->save();
                 return $this->success('操作成功', url('manage'));

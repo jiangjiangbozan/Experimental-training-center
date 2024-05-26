@@ -10,7 +10,7 @@ class ShowController extends Controller{
 	public function index()
     {
         $Show = new Show; 
-        $shows = Show::paginate(10);
+        $shows = Show::paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('shows', $shows);

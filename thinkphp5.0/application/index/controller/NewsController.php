@@ -10,7 +10,7 @@ class NewsController extends Controller
     public function index()
     {
         $News = new News; 
-        $new = News::order('id', 'desc')->paginate(10);
+        $new = News::order('id', 'desc')->paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('new', $new);

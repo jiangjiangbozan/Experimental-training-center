@@ -11,7 +11,7 @@ class LeaderteacherController extends Controller
     public function index()
     {
         $LeaderTeacher = new LeaderTeacher; 
-        $leaderteachers = LeaderTeacher::paginate(10);
+        $leaderteachers = LeaderTeacher::paginate(4);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('leaderteachers', $leaderteachers);
