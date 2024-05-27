@@ -6,16 +6,15 @@ use think\Request;
 use think\Db;
 use think\Session; 
 class TeacherController extends Controller{
-
 	public function index()
     {
         $Teacher = new Teacher; 
-        $teachers = Teacher::paginate(4);
+        $pagesize = 4;
+        $teachers = Teacher::order('id', 'desc')->paginate(4);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('teachers', $teachers);
         $htmls = $this->fetch(); // 取回打包后的数据
-
         return $htmls; // 将数据返回给用户
         
     }
