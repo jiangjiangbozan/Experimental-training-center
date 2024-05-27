@@ -11,5 +11,7 @@
     <a href="<?php echo url('video_teachingDetail', ['id' => $video_teaching['id']]); ?>" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($video_teaching['name']); ?></a>
 <?php endforeach; ?>
 </div>
-{$videoTeachings->render()}
+<div id="demo0">
+    {$videoTeachings->render()}
+</div>
 {/block}

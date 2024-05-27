@@ -7,5 +7,7 @@
 {volist name="leaderteachers" id="image" key="key"}
     <img style="width: 200px;" src="./../image/{$image->getData('path')}"/>
 {/volist}
-{$leaderteachers->render()}
+    <div id="demo0">
+        {$leaderteachers->render()}
+    </div>
 {/block}

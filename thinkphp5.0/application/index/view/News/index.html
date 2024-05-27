@@ -11,5 +11,7 @@
             <a href="<?php echo url('newsDetail', ['id' => $news['id']]); ?>" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($news['title']); ?></a>
         <?php endforeach; ?>
     </div>
-    {$new->render()}  
+    <div id="demo0">
+        {$new->render()}
+    </div>
 {/block}

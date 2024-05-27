@@ -11,5 +11,8 @@
             <a href="<?php echo url('notificationDetail', ['id' => $notification['id']]); ?>" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($notification['title']); ?></a>
         <?php endforeach; ?>
     </div>
-    {$notifications->render()}
+    <div id="demo0">
+        {$notifications->render()}
+    </div>
+        
 {/block}

@@ -2,18 +2,13 @@
 {block name="title"}
     师资队伍
 {/block}
-.span-vr{
-    line-height: 40px;
-    font-size: 14px;
-    color: #999999;
-    float: right;
-}
-{/block}
-
 {block name="content"}
-<h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">现任教师</h3>
-{volist name="teachers" id="teachers" key="key"}
-    <img src="\index\image\{$teachers->path}" style="width: 360px; margin-bottom: 50px;"/>
-{/volist}
+    <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">现任教师</h3>
+    {volist name="teachers" id="teacher" key="key"}
+        <img src="\index\image\{$teacher->path}" style="width: 360px; margin-bottom: 50px;"/>
+    {/volist}
+    <div id="demo0">
+        {$teachers->render()}
+    </div>
 {/block}
 
