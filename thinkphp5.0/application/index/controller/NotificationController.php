@@ -10,15 +10,15 @@ class NotificationController extends Controller
     public function index()
     {
         $Notification = new Notification; 
-<<<<<<< HEAD
+
         $Notification->where('')->order('state desc');
         if (!empty($title)) {
             $Notification->where('title', 'like', '%' . $title . '%')->order('state desc');
         }
         $notifications = Notification::order('id', 'desc')->paginate(10);
-=======
-        $notifications = Notification::order('id', 'desc')->paginate(5);
->>>>>>> 6be062e1be1f66d89960b886e4f6c586496e68f0
+
+   
+
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('notifications', $notifications);

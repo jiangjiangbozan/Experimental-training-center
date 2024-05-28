@@ -18,7 +18,7 @@
       <table class="table table-hover table-bordered ">
           <tr class="bg-primary-subtle info">
               <th>序号</th>
-              <th>名称</th>
+              <th>姓名</th>
               <th>图片</th>
               <th>操作</th>
           </tr>
@@ -26,7 +26,7 @@
           <tr>
               <td>{$key}</td>
               <td>{$teacher->getData('name')}</td>
-              <td><img style="width: 360px;" src="./../image/{$teacher->getData('path')}"/></td>
+              <td><img style="width: 250px; height: 300px;" src="./../image/{$teacher->getData('path')}"/></td>
               <td>
             <a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $teacher->getData('id'))}">编辑</a>
               &nbsp;&nbsp;

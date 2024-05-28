@@ -11,15 +11,14 @@ class NewsController extends Controller
     {
         //获取数据
         $News = new News; 
-<<<<<<< HEAD
         $News->where('')->order('state desc');
         if (!empty($title)) {
             $News->where('title', 'like', '%' . $title . '%')->order('state desc');
         }
-        $new = News::paginate(10);
-=======
+     
+
         $new = News::order('id', 'desc')->paginate(5);
->>>>>>> 6be062e1be1f66d89960b886e4f6c586496e68f0
+
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('new', $new);
@@ -45,13 +44,13 @@ class NewsController extends Controller
             $title = Request::instance()->get('title');
             $pagesize = 5;
            $News = new News; 
-<<<<<<< HEAD
+
            $News->where('')->order('state desc');
-=======
->>>>>>> 6be062e1be1f66d89960b886e4f6c586496e68f0
+
             if (!empty($title)) {
                 $News->where('title', 'like', '%' . $title . '%')->order('state desc');
             }
+
             // $News->where('is', 'like', '%' . $is . '%');
             $new = $News->order('id', 'desc')->paginate($pagesize, false, [
                 'query'=>[
@@ -72,20 +71,22 @@ class NewsController extends Controller
         
     }
 
-<<<<<<< HEAD
-    public function add()
-    {
-=======
+
+
     public function add(){
+        $News = new News; 
         $author = session('News_add_author');
         $source = session('News_add_source');
         $title = session('News_add_title');
         $content = session('News_add_content');
+
+        $News->state = 0;
+        $this->assign('News', $News);
         $this->assign('author', $author);
         $this->assign('source', $source);
         $this->assign('title', $title);
         $this->assign('content', $content);
->>>>>>> 6be062e1be1f66d89960b886e4f6c586496e68f0
+
     	$htmls = $this->fetch(); // 取回打包后的数据
         return $htmls;
     }
@@ -93,6 +94,7 @@ class NewsController extends Controller
     public function save()
     {
         $News = new News();
+        
         $file = request()->file('image');
         if($file){
             $info = $file->move(ROOT_PATH . 'public' . DS . 'index' . DS . 'image');

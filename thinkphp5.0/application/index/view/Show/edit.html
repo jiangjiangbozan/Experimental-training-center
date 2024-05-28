@@ -24,19 +24,32 @@
         <div class="col-md-12">
             {php}$action = request()->action() === 'add' ? 'save' : 'update';{/php}
             <form action="{:url($action)}" method="post">
-            <div class="mb-3 mt-3">
-                <input type="hidden" name="id" value="{$Show->getData('id')}" />
-                <label>名称:</label>
-                <input type="text" name="name" value="{$Show->getData('name')}" />
-            </div>
-            <div class="mb-3">
-                <label>内容:</label>
-                /****这里的*/
-                <input type="file" name="name" value="{$Show->getData('path')}" />
-                <img style="width: 360px;" src="./../image/{:$Show->getData('path')}"/>
-                {:var_dump($Show->getData('name'))}
-                <input type="file" name="path" rows="5" value="{$Show->getData('path')}"><img style="width: 360px;" src="./../image/{:$Organization->getData('path')}"/></input>
-            </div>
+                <div class="mt-3">
+                    <label>序号:</label>
+                    {$Show->getData('id')}
+                    <input type="hidden" name="id" value="{$Show->getData('id')}" />
+                </div>
+                <div>
+                    <div>
+                        <label>名称:</label>
+                    </div>
+                    <input style="width: 85%;" type="text" name="name" value="{$Show->getData('name')}" />
+                </div>
+                <div>
+                    <label>相关照片:</label>
+                </div>
+                <div class="mt-3">
+                    <?php if (0 !== (int)$Show->getData('path')): ?>
+                    <img style="width: 250px;" src="/index/image/{:$Show->getData('path')}"/>
+                    <?php else: ?>
+                    <div class="alert alert-danger">暂无相关照片</div>
+                    <?php endif; ?>
+                 </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">请选择图片</label>
+                        <input class="form-control" type="file" name="show" id="formFile">
+                    </div> 
+                </div>
             <div>
                 <button type="submit" class="btn btn-primary">保存</button>
             </div>

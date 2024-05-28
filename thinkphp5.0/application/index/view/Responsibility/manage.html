@@ -13,7 +13,7 @@
         </form>
         <div>
             <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;增加</a>
-            <a href="{:url('Shou/index')}" class="btn btn-primary">主页</a>
+            <a href="{:url('Index/index')}" class="btn btn-primary">主页</a>
         </div> 
       </div>  
       <hr />
@@ -28,14 +28,39 @@
           {volist name="responsibilitys" id="responsibility" key="key"}
           <tr>
             <td>{$key}</td>
-            <td>{$responsibility->getData('name')}</td>
-            <td>{$responsibility->getData('content')}</td>
-            <td>{$responsibility->getData('tel')}</td>
             <td>
+              <span class="d-inline-block text-truncate" 
+              style="color:#0D2D34;
+                      font-size: 15px;
+                      line-height: 23px;
+                      max-width: 150px;">
+                  {$responsibility->getData('name')}
+              </span>
+          </td>
+          <td>
+            <span class="d-inline-block text-truncate" 
+            style="color:#0D2D34;
+                    font-size: 15px;
+                    line-height: 23px;
+                    max-width: 150px;">
+                {$responsibility->getData('content')}
+            </span>
+        </td>
+        <td>
+          <span class="d-inline-block text-truncate" 
+          style="color:#0D2D34;
+                  font-size: 15px;
+                  line-height: 23px;
+                  max-width: 150px;">
+              {$responsibility->getData('tel')}
+          </span>
+        </td>
+           
+        <td>
           <a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $responsibility->getData('id'))}">编辑</a>
             &nbsp;&nbsp;
-            <a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $responsibility->getData('id'))}">删除</a>
-            </td>
+          <a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $responsibility->getData('id'))}">删除</a>
+        </td>
         </tr>
           {/volist}
       </table>
