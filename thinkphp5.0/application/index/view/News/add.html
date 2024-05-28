@@ -45,11 +45,7 @@
                     <label for="formFile" class="form-label">请选择你要添加的图片</label>
                     <input class="form-control" type="file" name="image" id="formFile">
                 </div> 
-                <div class="form-group form-check">
-                    <label for="state">是否置顶：</label>
-                    <input type="radio" name="state" value="1" id="state1" {eq name="News->getData('state')" value="1"}checked="checked"{/eq}/><label for="state1">置顶</label>
-                    <input type="radio" name="state" value="0" id="state2" {eq name="News->getData('state')" value="0"}checked="checked"{/eq}/><label for="state0">不置顶</label>
-                </div>
+                
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary">保存</button>
                 </div>

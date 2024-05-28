@@ -11,11 +11,11 @@ class NewsController extends Controller
     {
         //获取数据
         $News = new News; 
-
+        $News->where('')->order('state desc');
         if (!empty($title)) {
             $News->where('title', 'like', '%' . $title . '%')->order('state desc');
         }
-        $new = News::paginate(10);
+     
 
         $new = News::order('id', 'desc')->paginate(5);
 
@@ -50,6 +50,7 @@ class NewsController extends Controller
             if (!empty($title)) {
                 $News->where('title', 'like', '%' . $title . '%')->order('state desc');
             }
+
             // $News->where('is', 'like', '%' . $is . '%');
             $new = $News->order('id', 'desc')->paginate($pagesize, false, [
                 'query'=>[
@@ -73,10 +74,14 @@ class NewsController extends Controller
 
 
     public function add(){
+        $News = new News; 
         $author = session('News_add_author');
         $source = session('News_add_source');
         $title = session('News_add_title');
         $content = session('News_add_content');
+
+        $News->state = 0;
+        $this->assign('News', $News);
         $this->assign('author', $author);
         $this->assign('source', $source);
         $this->assign('title', $title);
@@ -89,6 +94,7 @@ class NewsController extends Controller
     public function save()
     {
         $News = new News();
+        
         $file = request()->file('image');
         if($file){
             $info = $file->move(ROOT_PATH . 'public' . DS . 'index' . DS . 'image');

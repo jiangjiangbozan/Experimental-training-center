@@ -30,15 +30,7 @@
           {volist name="new" id="image" key="key"}
             <tr>
               <td>{$key}</td>
-              <td>
-                <span class="d-inline-block text-truncate" 
-                style="color:#0D2D34;
-                        font-size: 15px;
-                        line-height: 23px;
-                        max-width: 150px;">
-                    {$image->getData('title')}
-                </span>
-            </td>
+              <td>{$image->getData('title')}</td>
               <td>
                   <span class="d-inline-block text-truncate" 
                   style="color:#0D2D34;
@@ -49,24 +41,8 @@
                   </span>
               </td>
               <td>{$image->getData('publish_date')}</td>
-              <td>
-                <span class="d-inline-block text-truncate" 
-                style="color:#0D2D34;
-                        font-size: 15px;
-                        line-height: 23px;
-                        max-width: 150px;">
-                    {$image->getData('author')}
-                </span>
-              </td>
-              <td>
-                <span class="d-inline-block text-truncate" 
-                style="color:#0D2D34;
-                        font-size: 15px;
-                        line-height: 23px;
-                        max-width: 150px;">
-                    {$image->getData('source')}
-                </span>
-              </td>
+              <td>{$image->getData('author')}</td>
+              <td>{$image->getData('source')}</td>
               <td>
                 <a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $image->getData('id'))}">编辑</a>
                 &nbsp;&nbsp;
@@ -75,7 +51,9 @@
             </tr>
           {/volist}
       </table>
-      {$new->render()}
+      <div id="demo0">
+        {$new->render()}
+      </div>
     </div>
   </div>
 </div>

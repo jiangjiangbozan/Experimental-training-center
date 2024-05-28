@@ -12,7 +12,7 @@ class ZiController extends Controller
 {
     public function index()
     {
-        $documents = Db::name('zi')->select(); // 查询documents表的所有记录
+        $documents = Zi::order('id', 'desc')->paginate(5);; // 查询documents表的所有记录
         // 分配数据给视图
         $power = Session::get('power');
     	$this->assign('power',$power);
