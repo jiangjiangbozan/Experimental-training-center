@@ -11,11 +11,21 @@
 }
 {/block}
 {block name="content"}
-<h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">中心展示</h3>
-{volist name="shows" id="show" key="key"}
-<img src="\index\image\{$show->path}" style="width: 360px; margin-bottom: 50px;"/>
-{/volist}
-<div id="demo0">
-    {$shows->render()}
-</div>
+    <div class="row">
+        {volist name="shows" id="show" key="key"}
+        <div class="col-6">
+            <table>
+                <tr>
+                    <img src="\index\image\{$show->path}" style="width: 360px; margin-bottom: 20px;"/>
+                </tr>
+            </table>
+            <span style="font-size:24px;">
+                <p>{$show->name}</p>
+            </span>
+        </div>   
+        {/volist}
+    </div>
+    <div id="demo0">
+        {$shows->render()}
+    </div>
 {/block}

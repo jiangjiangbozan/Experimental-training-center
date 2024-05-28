@@ -266,7 +266,11 @@
                         <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center;"><?php echo $news['title']; ?></h3>
                         <div class="middle">发布日期：<?php echo $news['publish_date']; ?>&nbsp;&nbsp;&nbsp;&nbsp;作者： &nbsp;&nbsp;&nbsp;&nbsp;来源： &nbsp;&nbsp;&nbsp;&nbsp;点击：<?php echo $news['views']; ?></div>
                         <p class="text-center" style="line-height: 180%;"><?php echo $news['content']; ?></p>
-                        <img style="width: 830px;" src="/index/image/{:$news['path']}"/>
+                        <?php if (0 !== (int)$news->getData('path')): ?>
+                            <img style="width: 830px;" src="/index/image/{:$news['path']}"/>
+                        <?php else: ?>
+                            <div class="alert alert-danger">暂无相关照片</div>
+                        <?php endif; ?>
                     </div>      
                 </div>
             </div>     

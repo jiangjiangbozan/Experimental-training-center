@@ -1,6 +1,6 @@
 {extend name="manage"/}
 {block name="title"}
-领导团队
+新闻快讯
 {/block}
 {block name="content"}
 <div class="row">
@@ -12,42 +12,35 @@
           <button class="btn btn-primary" type="submit">搜索</button>
         </form>
         <div>
-            <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;增加</a>
-            <a href="{:url('Index/index')}" class="btn btn-primary">主页</a>
+          <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;增加</a>
+          <a href="{:url('Index/index')}" class="btn btn-primary">主页</a>
         </div> 
-      </div>
+      </div>  
       <hr />
       <table class="table table-hover table-bordered ">
           <tr class="bg-primary-subtle info">
-              <th>序号</th>
-              <th>名称</th>
-              <th>内容</th>
-              <th>操作</th>
+            <th>序号</th>
+            <th>图片</th>
+            <th>操作</th>
           </tr>
-          {volist name="leaderteachers" id="image" key="key"}
-          <tr>
+          {volist name="carouselImages" id="image" key="key"}
+            <tr>
               <td>{$key}</td>
-              <td>{$image->getData('name')}</td>
               <td>
-                <?php if (0 !== (int)$image->getData('path')): ?>
-                    <img style="width: 360px;" src="/index/image/{$image->getData('path')}"/>
-                <?php else: ?>
-                    <div class="alert alert-danger">暂无相关照片</div>
-                <?php endif; ?> 
-
+                <img style="width: 360px;" src="/index/image/{$image->getData('image_path')}"/>
               </td>
               <td>
                 <a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $image->getData('id'))}">编辑</a>
                 &nbsp;&nbsp;
                 <a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $image->getData('id'))}">删除</a>
               </td>
-          </tr>
+            </tr>
           {/volist}
       </table>
       <div id="demo0">
-        {$leaderteachers->render()}
+        {$carouselImages->render()}
       </div>
+    </div>
   </div>
-</div>
 </div>
 {/block}

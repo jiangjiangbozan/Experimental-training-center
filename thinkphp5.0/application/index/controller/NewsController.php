@@ -9,8 +9,12 @@ class NewsController extends Controller
 {
     public function index()
     {
+        $title = Request::instance()->get('title');
         $News = new News; 
-        $new = News::order('id', 'desc')->paginate(5);
+        if (!empty($title)) {
+            $News->where('title', 'like', '%' . $title . '%');
+        }
+        $new = $News::order('id', 'desc')->paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('new', $new);
@@ -21,7 +25,7 @@ class NewsController extends Controller
     public function newsDetail($id)
     {
         // 根据$id查询新闻详情
-        $news = Db::name('news')->where('id', $id)->find();
+        $news = News::get($id);
         if (!$news) {
             // 如果找不到新闻，可以抛出404错误或重定向到其他页面
             $this->error('新闻不存在');
@@ -39,7 +43,6 @@ class NewsController extends Controller
             if (!empty($title)) {
                 $News->where('title', 'like', '%' . $title . '%');
             }
-            // $News->where('is', 'like', '%' . $is . '%');
             $new = $News->order('id', 'desc')->paginate($pagesize, false, [
                 'query'=>[
                     'title' => $title,

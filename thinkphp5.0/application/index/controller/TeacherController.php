@@ -65,13 +65,9 @@ class TeacherController extends Controller{
     }
     public function add()
     {
-        $Teacher = new Teacher;
-        
-        $Teacher->id = 0;
-        $Teacher->name = '';
-        $Teacher->path = '';
-        $Teacher->create_time = '';
-
+        $Teacher = New Teacher();
+        var_dump($Teacher);
+        die();
         $this->assign('Teacher', $Teacher);
         
     	$htmls = $this->fetch(); // 取回打包后的数据
@@ -100,16 +96,18 @@ class TeacherController extends Controller{
                 $Teachers = new Teacher();
                 // 实例化班级并赋值
                 $Teachers->path = $info->getSaveName();
-                $Teachers->name = Request::instance()->post('name');
-                $Teachers->create_time = Request::instance()->post('create_time');
-                $Teachers->save();
-                return $this->success('操作成功', url('manage'));
+
+
+                
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
             }
         }
-        return $this->fetch();
+        $Teachers->name = Request::instance()->post('name');
+        $Teachers->create_time = Request::instance()->post('create_time');
+        $Teachers->save();
+        return $this->success('操作成功', url('manage'));
 	}
     public function edit()
     {

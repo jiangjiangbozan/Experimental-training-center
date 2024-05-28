@@ -10,7 +10,11 @@ class NotificationController extends Controller
     public function index()
     {
         $Notification = new Notification; 
-        $notifications = Notification::order('id', 'desc')->paginate(5);
+        $title = Request::instance()->get('title');
+        if (!empty($title)) {
+            $Notification->where('title', 'like', '%' . $title . '%');
+        }
+        $notifications = $Notification::order('id', 'desc')->paginate(5);
     	$power = Session::get('power');
     	$this->assign('power',$power);
         $this->assign('notifications', $notifications);
@@ -21,7 +25,7 @@ class NotificationController extends Controller
     public function notificationDetail($id)
     {
         // 根据$id查询新闻详情
-        $notification = Db::name('notification')->where('id', $id)->find();
+        $notification = Notification::get($id);
         if (!$notification) {
             // 如果找不到新闻，可以抛出404错误或重定向到其他页面
             $this->error('新闻不存在');

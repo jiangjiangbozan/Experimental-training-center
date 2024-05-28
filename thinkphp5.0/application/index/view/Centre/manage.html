@@ -10,7 +10,6 @@
             <hr />
             <div class="row">
                 <div class="col-md-4 text-center">
-                    <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;增加</a>
                     <a href="{:url('Shou/index')}" class="btn btn-primary">主页</a>
                 </div>
                 
@@ -21,7 +20,6 @@
                     <th>序号</th>
                     <th>名称</th>
                     <th>内容</th>
-                    <th>创建时间</th>
                     <th>操作</th>
                 </tr>
                 {volist name="centres" id="centre" key="key"}
@@ -37,9 +35,7 @@
                             {$centre->getData('content')}
                         </span>
                     </td>
-                    <td>{$centre->getData('create_time')}</td>
                     <td><a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $centre->getData('id'))}">编辑</a>
-                        &nbsp;&nbsp;
                     </td>
                 </tr>
                 {/volist}

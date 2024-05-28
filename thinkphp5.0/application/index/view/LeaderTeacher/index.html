@@ -3,10 +3,25 @@
 领导团队
 {/block}
 {block name="content"}
-<h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">领导团队</h3>
-{volist name="leaderteachers" id="image" key="key"}
-    <img style="width: 200px;" src="./../image/{$image->getData('path')}"/>
-{/volist}
+    <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">领导团队</h3>
+    <div class="row">
+        {volist name="leaderteachers" id="image" key="key"}
+        <div class="col-6">
+            <table>
+                <?php if (0 !== (int)$image->getData('path')): ?>
+                    <tr>
+                        <img style="width: 300px; margin-bottom: 50px;" src="./../image/{$image->getData('path')}"/>
+                    </tr>
+                <?php else: ?>
+                    <div class="alert alert-danger">暂无相关照片</div>
+                <?php endif; ?> 
+            </table>
+            <span style="font-size:24px;">
+                <p>{$image->name}</p>
+            </span>
+        </div>   
+        {/volist}
+    </div>
     <div id="demo0">
         {$leaderteachers->render()}
     </div>

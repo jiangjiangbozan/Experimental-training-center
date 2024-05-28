@@ -7,9 +7,11 @@
 {/block}
 {block name="content"}
     <div class="list-group">
-        <?php foreach($new as $news): ?>
-            <a href="<?php echo url('newsDetail', ['id' => $news['id']]); ?>" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($news['title']); ?></a>
-        <?php endforeach; ?>
+        <div>
+            <?php foreach($new as $news): ?>
+                <a href="<?php echo url('newsDetail', ['id' => $news['id']]); ?>" class="list-group-item list-group-item-action"><?php echo htmlspecialchars($news['title']); ?></a>
+            <?php endforeach; ?>
+        </div>
     </div>
     <div id="demo0">
         {$new->render()}

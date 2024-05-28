@@ -65,9 +65,15 @@ class ResponsibilityController extends Controller
             // 反馈结果
             if (false === $result)
             {
+                session('Responsibility_add_tel', $Responsibility->tel);
+                session('Responsibility_add_name', $Responsibility->name);
+                session('Responsibility_add_content', $Responsibility->content);
                 // 验证未通过，发生错误
                 $message = '新增失败:' . $Responsibility->getError();
             } else {
+                session('Responsibility_add_tel', null);
+                session('Responsibility_add_name', null);
+                session('Responsibility_add_content', null);
                 // 提示操作成功
                 return $this->success('用户' . $Responsibility->name . '新增成功。', url('manage'));
             }
@@ -87,12 +93,12 @@ class ResponsibilityController extends Controller
     public function add()
     {
         try {
-            $Responsibility = new Responsibility; 
-            $Responsibility->id = 0;
-            $Responsibility->name = '';
-            $Responsibility->content = '';
-            $Responsibility->tel = '';
-            $this->assign('Responsibility', $Responsibility);
+            $name = session('Responsibility_add_name');
+            $content = session('Responsibility_add_content');
+            $tel = session('Responsibility_add_tel');
+            $this->assign('name', $name);
+            $this->assign('content', $content);
+            $this->assign('tel', $tel);
             $htmls = $this->fetch();
             return $htmls;
         } catch (\Exception $e) {

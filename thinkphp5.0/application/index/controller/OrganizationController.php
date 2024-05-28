@@ -54,7 +54,6 @@ class OrganizationController extends Controller{
     public function add()
     {
         $Organization = new Organization;
-        
         $Organization->id = 0;
         $Organization->name = '';
         $Organization->path = '';

@@ -61,7 +61,8 @@ class LeaderteacherController extends Controller
         $leaderteachers = new LeaderTeacher();
         $leaderteachers->name = Request::instance()->post('name');
           // 获取表单上传文件 例如上传了001.jpg
-        $file = request()->file('image');       
+        $file = request()->file('image');      
+
         // 移动到框架应用根目录/public/uploads/ 目录下
         if($file){
             $info = $file->move(ROOT_PATH . 'public' . DS . 'index' . DS . 'image');
@@ -74,15 +75,17 @@ class LeaderteacherController extends Controller
                 // 输出 42a79759f284b767dfcb2a0197904287.jpg
                 // echo $info->getFilename();
                 // 实例化班级并赋值
-                $leaderteachers->path = $info->getSaveName();
-                $leaderteachers->save();
+              
+                $leaderteachers->path = $info->getSaveName(); 
+             
                 return $this->success('操作成功', url('manage'));
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
             }
         }
-        return $this->fetch();
+        $leaderteachers->save();
+        return $this->success('操作成功', url('manage'));
 	}
     public function edit(){
         try {

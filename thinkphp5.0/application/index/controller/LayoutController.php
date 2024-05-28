@@ -15,7 +15,6 @@ class LayoutController extends Controller{
     	$this->assign('power',$power);
         $this->assign('layouts', $layouts);
         $htmls = $this->fetch(); // 取回打包后的数据
-
         return $htmls; // 将数据返回给用户
         
     }
@@ -54,7 +53,6 @@ class LayoutController extends Controller{
     public function add()
     {
         $Layout = new Layout;
-        
         $Layout->id = 0;
         $Layout->name = '';
         $Layout->create_time = '';

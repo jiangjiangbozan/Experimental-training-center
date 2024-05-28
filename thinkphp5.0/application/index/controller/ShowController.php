@@ -53,8 +53,8 @@ class ShowController extends Controller{
     }
     public function add()
     {
-        $Show = new Show;
         
+        $Show = new Show;
         $Show->id = 0;
         $Show->name = '';
         $Show->create_time = '';
@@ -87,16 +87,15 @@ class ShowController extends Controller{
                 $Shows = new Show();
                 // 实例化班级并赋值
                 $Shows->path = $info->getSaveName();
-                $Shows->name = Request::instance()->post('name');
-                $Shows->create_time = Request::instance()->post('create_time');
-                $Shows->save();
-                return $this->success('操作成功', url('manage'));
             }else{
                 // 上传失败获取错误信息
                 echo $file->getError();
             }
         }
-        return $this->fetch();
+        $Shows->name = Request::instance()->post('name');
+        $Shows->create_time = Request::instance()->post('create_time');
+        $Shows->save();
+        return $this->success('操作成功', url('manage'));
 	}
     public function edit()
     {

@@ -18,20 +18,17 @@
         }
     </style>
 </head>
-
 <body class="container">
     <div class="center">
         <div class="col-md-12">
             {php}$action = request()->action() === 'add' ? 'save' : 'update';{/php}
             <form action="{:url($action)}" method="post" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
-                <input type="hidden" name="id" value="{$LeaderTeacher->getData('id')}" />
-                <label>名称:</label>
-                <input type="text" name="name" value="{$LeaderTeacher->getData('name')}" />
+                <input type="hidden" name="id" value="{$CarouselImage->getData('id')}" />
             </div>
             <div class="mb-3">
-                <label>内容:</label>
-                <img style="width: 360px;" src="/index/image/{:$LeaderTeacher->getData('path')}"/>
+                <label>轮播图片:</label>
+                <img style="width: 360px;" src=" /index/image/{:$CarouselImage->getData('image_path')}"/>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">请选择你要更改的图片</label>
                     <input class="form-control" type="file" name="image" id="formFile">

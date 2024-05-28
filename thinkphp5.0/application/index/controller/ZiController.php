@@ -5,6 +5,7 @@ use think\Response;
 use think\Db; // 导入Db类
 use app\common\model\Zi; 
 use think\Session;  
+use think\Request; 
 /**
  * 
  */
@@ -12,7 +13,12 @@ class ZiController extends Controller
 {
     public function index()
     {
-        $documents = Zi::order('id', 'desc')->paginate(5);; // 查询documents表的所有记录
+        $name = Request::instance()->get('name');
+        $Zi = new Zi; 
+        if (!empty($name)) {
+            $Zi->where('name', 'like', '%' . $name . '%');
+        }
+        $documents = $Zi::order('id', 'desc')->paginate(5);; // 查询documents表的所有记录
         // 分配数据给视图
         $power = Session::get('power');
     	$this->assign('power',$power);

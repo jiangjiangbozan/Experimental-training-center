@@ -4,9 +4,20 @@
 {/block}
 {block name="content"}
     <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center; margin-bottom: 50px;">现任教师</h3>
-    {volist name="teachers" id="teacher" key="key"}
-        <img src="\index\image\{$teacher->path}" style="width: 360px; margin-bottom: 50px;"/>
-    {/volist}
+    <div class="row">
+        {volist name="teachers" id="teacher" key="key"}
+            <div class="col-6">
+                <table>
+                    <tr>
+                        <img src="\index\image\{$teacher->path}" style="width: 360px; margin-bottom: 5px;"/>
+                    </tr>
+                </table>
+                <span style="font-size:24px;">
+                    <p>{$teacher->name}</p>
+                </span>
+            </div>   
+        {/volist}
+    </div>
     <div id="demo0">
         {$teachers->render()}
     </div>
