@@ -69,6 +69,21 @@
             font-size: 10px;
             line-height: 10px;
         }
+        .navbar {
+            display: flex;
+            justify-content: space-around; 
+        }
+
+        .nav-link {
+            display: inline-block; 
+            width: 100%; /* 确保链接覆盖父元素的宽度 */
+            text-align: center; /* 文本居中 */
+        }
+
+        .nav-link.active {
+            background-color: #007bff; /* 背景颜色 */
+            color: white;
+        }
         /*主体内容*/
         .text-center {
             font-size: 20px;
@@ -81,26 +96,50 @@
             font-family: "Microsoft Yahei", 宋体, Verdana, Arial, Helvetica, sans-serif;
             text-indent: 50px; /* 保留段首缩进 */
         }
+        .text-l{
+        text-align: center;
+        }
+        .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}  
+        .pagination li{margin:0px 0px; border:1px solid #e6e6e6;padding: 3px 20px;display: inline-block;}  
+        .pagination .active{background-color: #1a3edd;color: #fff;}  
+        .pagination .disabled{color:#aaa;
+        }  
         {block name="css"}
         {/block}
     </style>
     <script>
         //弹出
-        function toggleText(text) {
-          var textDiv = document.getElementById('text');
-          if (textDiv.style.display === 'none') {
-            textDiv.style.display = 'block';
-          } else {
-            textDiv.style.display = 'none';
-          }
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggleButton = document.getElementById('toggleTeacher');
+            var teacherList = document.getElementById('teacher-list');
+            var currentUrl = window.location.href;
 
-          var textDiv = document.getElementById('at');
-          if (textDiv.style.display === 'none') {
-            textDiv.style.display = 'block';
-          } else {
-            textDiv.style.display = 'none';
-          }
-        }
+            // 检查当前页面URL是否匹配到“现任教师”或“领导团队”页面
+            if (currentUrl.endsWith("{:url('Shi/index')}") || currentUrl.endsWith("{:url('Leaderteacher/index')}")) {
+                teacherList.style.display = 'block';
+                toggleButton.classList.add('active'); // 保持按钮激活状态
+                // 根据当前页面URL激活对应的子菜单项
+                if (currentUrl.endsWith("{:url('Shi/index')}")) {
+                    document.getElementById('nav-shi').classList.add('active');
+                } else if (currentUrl.endsWith("{:url('Leaderteacher/index')}")) {
+                    document.getElementById('nav-leaderteacher').classList.add('active');
+                }
+            }
+
+            // 点击“师资队伍”按钮时切换子菜单显示状态
+            toggleButton.addEventListener('click', function() {
+                teacherList.style.display = teacherList.style.display === 'none' ? 'block' : 'none';
+                this.classList.toggle('active'); // 添加或移除active类以改变按钮样式
+            });
+
+            // 点击子菜单以外的地方时关闭子菜单
+            document.addEventListener('click', function(event) {
+                if (!toggleButton.contains(event.target) && !teacherList.contains(event.target)) {
+                    teacherList.style.display = 'none';
+                    toggleButton.classList.remove('active');
+                }
+            });
+        });
         //提示
         function showSwal() {
             Swal.fire({
@@ -110,6 +149,7 @@
                 confirmButtonText: '确认'
             });
         }
+        
     </script>
 </head>
 <body>
@@ -147,31 +187,40 @@
             <div class="btn-group">
                <a type="button" class="btn btn-primary" href="{:url('Index/index')}">网站首页</a>
             </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">中心概况</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{:url('Centre/index')}">中心介绍</a></li>
-                    <li><a class="dropdown-item" href="{:url('Organization/index')}">组织结构</a></li>
-                    <li><a class="dropdown-item" href="{:url('Responsibility/index')}">岗位职责</a></li>
-                    <li><a class="dropdown-item" href="{:url('Layout/index')}">中心布局图</a></li>
-                    <li><a class="dropdown-item" href="{:url('Teacher/index')}">师资队伍</a></li>
-                    <li><a class="dropdown-item" href="{:url('Show/index')}">中心展示</a></li>
-                    <li><a class="dropdown-item" href="{:url('Manage/index')}">管理制度</a></li>
-                    <li><a class="dropdown-item" href="{:url('Vr/index')}">VR中心</a></li>
-                </ul>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">新闻动态</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{:url('News/index')}">新闻快讯</a></li>
-                    <li><a class="dropdown-item" href="{:url('Notification/index')}">通知公告</a></li>
-                </ul>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">实验教学</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{:url('VideoTeaching/index')}">视频教学资源</a></li>
-                </ul>
+
+            <div class="col-8 bg-primary text-white">
+                <div class="btn-group">
+                   <a type="button" style="Width:200px" class="btn btn-primary" href="{:url('Index/index')}">网站首页</a>
+                </div>
+                <div class="btn-group">
+                    <button type="button" style="Width:200px" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">中心概况</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{:url('Centre/index')}">中心介绍</a></li>
+                        <li><a class="dropdown-item" href="{:url('Organization/index')}">组织结构</a></li>
+                        <li><a class="dropdown-item" href="{:url('Responsibility/index')}">岗位职责</a></li>
+                        <li><a class="dropdown-item" href="{:url('Layout/index')}">中心布局图</a></li>
+                        <li><a class="dropdown-item" href="{:url('Teacher/index')}">师资队伍</a></li>
+                        <li><a class="dropdown-item" href="{:url('Show/index')}">中心展示</a></li>
+                        <li><a class="dropdown-item" href="{:url('Manage/index')}">管理制度</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" style="Width:200px" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">新闻动态</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{:url('News/index')}">新闻快讯</a></li>
+                        <li><a class="dropdown-item" href="{:url('Notification/index')}">通知公告</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" style="Width:200px" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">实验教学</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{:url('VideoTeaching/index')}">视频教学资源</a></li>
+                    </ul>
+                </div>
+                <div style="Width:200px" class="btn-group">
+                    <a type="button" class="btn btn-primary" href="{:url('Zi/index')}">资料下载</a>
+                </div>
+
             </div>
             <div class="btn-group">
                 <a type="button" class="btn btn-primary" href="{:url('Zi/index')}">资料下载</a>
@@ -209,58 +258,55 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <nav class="navbar bg-body-tertiary">
-                                    <div class="container-fluid">
-                                        <a class="btn" href="{:url('Centre/index')}">中心介绍</a>
+                                <nav class="navbar bg-body-tertiary d-flex">
+                                    <div class="nav-item d-flex align-items-center" style="width: 100%;">
+                                        <a id="nav-zhong" class="btn nav-link w-100" href="{:url('Centre/index')}">中心介绍</a>
                                     </div>
                                 </nav>
-                                <nav class="navbar bg-body-tertiary">
-                                    <div class="container-fluid">
-                                        <a class="btn" href="{:url('Organization/index')}">组织结构</a>
+                                <nav class="navbar bg-body-tertiary d-flex">
+                                    <div class="nav-item d-flex align-items-center" style="width: 100%;">
+                                        <a id="nav-zu" class="btn nav-link w-100" href="{:url('Organization/index')}">组织结构</a>
                                     </div>
                                 </nav>
-                                <nav class="navbar bg-body-tertiary">
-                                    <div class="container-fluid">
-                                        <a class="btn" href="{:url('Responsibility/index')}">岗位职责</a>
+                                <nav class="navbar bg-body-tertiary d-flex">
+                                    <div class="nav-item d-flex align-items-center" style="width: 100%;">
+                                        <a id="nav-gang" class="btn nav-link w-100" href="{:url('Responsibility/index')}">岗位职责</a>
                                     </div>
                                 </nav>
-                                <nav class="navbar bg-body-tertiary">
-                                    <div class="container-fluid">
-                                        <a class="btn" href="{:url('Layout/index')}">中心布局图</a>
+                                <nav class="navbar bg-body-tertiary d-flex">
+                                    <div class="nav-item d-flex align-items-center" style="width: 100%;">
+                                        <a id="nav-bu" class="btn nav-link w-100" href="{:url('Layout/index')}">中心布局图</a>
                                     </div>
                                 </nav>
-                                <nav class="navbar bg-body-tertiary">
-                                    <div class="container-fluid">
-                                        <a ><button class="btn" onclick="toggleText()">师资队伍</button><a>
-                                        <ul><a id="text" class="btn" href="{:url('Teacher/index')}">现任教师</a></ul>
-                                        <ul><a id="at" class="btn" href="{:url('Leaderteacher/index')}">领导团队</a></ul>
+                                <nav class="navbar bg-body-tertiary d-flex">
+                                    <div class="nav-item d-flex align-items-center" style="width: 100%;">
+                                        <button class="btn nav-link w-100" id="toggleTeacher">师资队伍</button>
+                                        <ul id="teacher-list" style="display: none;">
+                                            <li><a id="nav-shi" class="btn nav-link w-100" href="{:url('Teacher/index')}">现任教师</a></li>
+                                            <li><a id="nav-leaderteacher" class="btn nav-link w-100" href="{:url('Leaderteacher/index')}">领导团队</a></li>
+                                        </ul>
                                     </div>
                                 </nav>
-                                <nav class="navbar bg-body-tertiary">
-                                    <div class="container-fluid">
-                                        <a class="btn" href="{:url('Show/index')}">中心展示</a>
+                                <nav class="navbar bg-body-tertiary d-flex">
+                                    <div class="nav-item d-flex align-items-center" style="width: 100%;">
+                                        <a id="nav-bu" class="btn nav-link w-100" href="{:url('Show/index')}">中心展示</a>
                                     </div>
                                 </nav>
-                                <nav class="navbar bg-body-tertiary">
-                                    <div class="container-fluid">
-                                        <a class="btn" href="{:url('Manage/index')}">管理制度</a>
-                                    </div>
-                                </nav>
-                                <nav class="navbar bg-body-tertiary">
-                                    <div class="container-fluid">
-                                        <a class="btn" href="{:url('Vr/index')}">VR中心</a>
+                                <nav class="navbar bg-body-tertiary d-flex">
+                                    <div class="nav-item d-flex align-items-center" style="width: 100%;">
+                                        <a id="nav-bu" class="btn nav-link w-100" href="{:url('Manage/index')}">管理制度</a>
                                     </div>
                                 </nav>
                             </div>
                         </div>
                     </div>
-                    <div style=" padding-bottom:40px"class="col-10" style="border: #eaeaea 1px solid; padding: 0 20px;">
+                    <div class="col-10" style=" padding-bottom:40px" style="border: #eaeaea 1px solid; padding: 0 20px;">
                         <h3 style="margin-top: 30px; line-height: 50px; font-size: 30px;text-align: center;">
                             {block name="name"}
                             {/block}
                         </h3>
                         {eq name="$power" value="0"}
-                        <a type="button" class="btn btn-primary"href="{:url('manage')}">管理</a> 
+                        <a type="button" class="btn btn-primary"href="{:url('manage')}">修改</a> 
                         {/eq}
                         {block name="content"}
                         {/block}

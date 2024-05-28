@@ -81,6 +81,14 @@
             font-family: "Microsoft Yahei", 宋体, Verdana, Arial, Helvetica, sans-serif;
             text-indent: 50px; /* 保留段首缩进 */
         }
+        .text-l{
+        text-align: center;
+        }
+        .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}  
+        .pagination li{margin:0px 0px; border:1px solid #e6e6e6;padding: 3px 20px;display: inline-block;}  
+        .pagination .active{background-color: #1a3edd;color: #fff;}  
+        .pagination .disabled{color:#aaa;
+        }  
         {block name="css"}
         {/block}
     </style>
@@ -147,6 +155,7 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">中心概况</button>
                     <ul class="dropdown-menu">
+
                         <li><a class="dropdown-item" href="{:url('Centre/manage')}">中心介绍</a></li>
                         <li><a class="dropdown-item" href="{:url('Organization/manage')}">组织结构</a></li>
                         <li><a class="dropdown-item" href="{:url('Responsibility/manage')}">岗位职责</a></li>
@@ -155,6 +164,8 @@
                         <li><a class="dropdown-item" href="{:url('Show/manage')}">中心展示</a></li>
                         <li><a class="dropdown-item" href="{:url('Manage/manage')}">管理制度</a></li>
                         <li><a class="dropdown-item" href="{:url('Vr/manage')}">VR中心</a></li>
+
+
                     </ul>
                 </div>
                 <div class="btn-group">

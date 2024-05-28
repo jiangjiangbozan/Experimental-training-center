@@ -3,8 +3,6 @@
 中心展示
 {/block}
 {block name="content"}
-
-      
     <div class="row">
         <div class="col-md-12">
             <hr />
@@ -37,7 +35,9 @@
                 </tr>
                 {/volist}
             </table>
-            {$shows->render()}
+            <div id="demo0">
+                {$shows->render()}
+            </div>
             {/block}
         
         </div>
